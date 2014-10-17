@@ -2,7 +2,7 @@
 #
 # Generate localization file for Wasteland 2 from a csv source
 #
-# 2014, Edmondo Tommasin
+# 2014, Edmondo Tommasina
 
 import sys
 import string
