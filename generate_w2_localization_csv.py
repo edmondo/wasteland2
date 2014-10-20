@@ -12,27 +12,16 @@ import csv
 with open(str(sys.argv[1]), 'rb') as f:
     reader = csv.reader(f)
 
-    # Iterate trough all rows
-    rownum = -1
-    for row in reader:
-        rownum += 1
-        if rownum == 0:
-            pos_key = row.index('Key')
-            pos_tra = row.index('it')
-
-            if pos_key == -1:
-                print('Key column not found')
-                break
-
-            if pos_tra == -1:
-                print('Translation column not found')
-                break
-
-            continue
-
-
-        # Print key and translation lines
-        print('#' + row[pos_key])
-        print('=' + row[pos_tra])
-
-
+    try:
+        # Get the column positions from the header line
+        row = reader.next()
+        pos_key = row.index('Key')
+        pos_tra = row.index('it')
+    except ValueError:
+        print('Key or Translation column not found')
+    else:
+        # Iterate trough all rows
+        for row in reader:
+            # Print key and translation lines
+            print('#' + row[pos_key])
+            print('=' + row[pos_tra])
