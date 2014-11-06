@@ -17,7 +17,7 @@ with open(str(sys.argv[1]), 'rb') as f:
         row = reader.next()
         pos_tra = row.index('it')
     except ValueError:
-        print('Key or Translation column not found')
+        print('Translation column not found')
     else:
         # Iterate trough all rows
         for row in reader:
